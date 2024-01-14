@@ -12,13 +12,18 @@ class Solution
     { 
         // Your code here
         vector<int>ans;
-        map<string,int>mp;
+        map<long long int,int>mp;
+        long long z=1e9+1;
         for(int i=0;i<m;i++)
         {
-            string s="";
+            long long s=0;
             for(int j=0;j<n;j++)
             {
-                s=s+to_string(a[i][j]);
+                if(a[i][j]==1)
+                {
+                    s=s+(1<<j);
+                    s=s%z;
+                }
             }
             if(mp.find(s)!=mp.end())
             {
