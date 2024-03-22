@@ -91,7 +91,6 @@ struct Node{
 };
 */
 
-
 class Solution {
   public:
     vector<int> diagonalSum(Node* root) {
@@ -123,7 +122,6 @@ class Solution {
         }
         return ans;
     }
-
 };
 
 
