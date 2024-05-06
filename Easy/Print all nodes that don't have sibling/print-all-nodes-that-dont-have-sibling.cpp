@@ -116,10 +116,6 @@ int main()
 void fun(Node* root,vector<int>&ans)
 {
     if(!root) return;
-    // if(!root->left && !root->right)
-    // {
-    //     return;
-    // }
     if(!root->left && root->right)
     {
         ans.push_back(root->right->data);
