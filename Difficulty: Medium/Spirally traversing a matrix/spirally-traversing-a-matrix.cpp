@@ -4,54 +4,44 @@ using namespace std;
 
 
 // } Driver Code Ends
-class Solution
-{   
-    public: 
-    //Function to return a list of integers denoting spiral traversal of matrix.
-    vector<int> spirallyTraverse(vector<vector<int> > m) 
-    {
-        // code here 
-        int p=0,q=m.size()-1,r=0,s=m[0].size()-1,c=0,z=((q+1)*(s+1)),i,j,n=z;
-        vector<int>v;
-        while(c<z)
-        {
-            for(i=r;i<=s;i++)
-            {
-                if(c>=n) break;
-                v.push_back(m[p][i]);
-                c++;
+class Solution {
+  public:
+    vector<int> spirallyTraverse(vector<vector<int> > &v) {
+        // code here
+        vector<int> ans; 
+        int i1 = 0; 
+        int i2 = v.size()-1; 
+        int j1 = 0;
+        int j2 = v[0].size()-1;
+    
+        
+        while(i1<=i2 && j1<=j2){
+            for(int p = j1;p <= j2;p++){
+                ans.push_back(v[i1][p]) ;
             }
-            p++;
-            for(i=p;i<=q;i++)
-            {
-                if(c>=n) break;
-                v.push_back(m[i][s]);
-                c++;
-                //if(c>=n) break;
+            i1++; 
+            for(int q = i1;q <= i2;q++){
+                ans.push_back(v[q][j2]); 
             }
-            s--;
-            for(i=s;i>=r;i--)
-            {
-                if(c>=n) break;
-                v.push_back(m[q][i]);
-                c++;
-                //if(c>=n) break;
+            j2--; 
+            if(i1<=i2){
+                for(int r = j2;r >= j1;r--){
+                ans.push_back(v[i2][r]);
+                }
+                i2--;
             }
-            q--;
-            for(i=q;i>=p;i--)
-            {
-                if(c>=n) break;
-                v.push_back(m[i][r]);
-                c++;
-                //if(c>=n) break;
+            
+            if(j1<=j2){
+                for(int s = i2;s >= i1;s--){
+                    ans.push_back(v[s][j1]); 
+                }
+                j1++; 
             }
-            r++;
-        }
-        //v.pop_back();
-        return v;
+        }  
+        
+        return ans; 
     }
 };
-
 
 //{ Driver Code Starts.
 int main() {
@@ -61,9 +51,10 @@ int main() {
     while (t--) {
         int r, c;
         cin >> r >> c;
-        vector<vector<int>> matrix(r, vector<int>(c, 0));
+        vector<vector<int>> matrix(r);
 
         for (int i = 0; i < r; i++) {
+            matrix[i].assign(c, 0);
             for (int j = 0; j < c; j++) {
                 cin >> matrix[i][j];
             }
@@ -74,6 +65,9 @@ int main() {
         for (int i = 0; i < result.size(); ++i)
             cout << result[i] << " ";
         cout << endl;
+
+        cout << "~"
+             << "\n";
     }
     return 0;
 }
